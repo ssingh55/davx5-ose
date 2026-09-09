@@ -8,14 +8,11 @@
     <!-- We need cleartext traffic because users
     1. can use `http://` WebDAV servers (usually in the LAN),
     2. can use a HTTP/SOCKS/Tor proxy without encryption (usually, but not necessarily on localhost). -->
-    <base-config cleartextTrafficPermitted="true">
+    <base-config cleartextTrafficPermitted="false">
 
         <trust-anchors>
             <!-- Trust system certificates. -->
             <certificates src="system"/>
-
-            <!-- Trust CA certificates which have been installed by the user. -->
-            <certificates src="user" tools:ignore="AcceptsUserCertificates" />
         </trust-anchors>
 
     </base-config>
