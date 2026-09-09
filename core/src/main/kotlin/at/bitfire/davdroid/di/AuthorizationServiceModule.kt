@@ -38,6 +38,7 @@ class AuthorizationServiceModule {
             context,
             AppAuthConfiguration.Builder()
                 .setConnectionBuilder { uri ->
+                    require(uri.scheme == "https") { "URI must use https scheme: $uri" }
                     val url = URL(uri.toString())
                     (url.openConnection() as HttpURLConnection).apply {
                         setRequestProperty("User-Agent", productIds.httpUserAgent)
